@@ -3,7 +3,7 @@ def shift_normal(bits, n):
 
 def rotar(bits, n):
     return bits[n:] + bits[:n]
-	  
+      
 
 ejemplo = "10110010"
 print("Original:", ejemplo)
@@ -17,6 +17,40 @@ original = c
 
 for r in ROTACIONES:
 
-	c = rotar(c, r)                          
+    c = rotar(c, r)                          
 
 print("¿Regresó al original?", c == original)   
+
+# ===== Fase 2: PC-1 =====
+
+PC1 = [
+    57, 49, 41, 33, 25, 17, 9,
+    1, 58, 50, 42, 34, 26, 18,
+    10, 2, 59, 51, 43, 35, 27,
+    19, 11, 3, 60, 52, 44, 36,
+    63, 55, 47, 39, 31, 23, 15,
+    7, 62, 54, 46, 38, 30, 22,
+    14, 6, 61, 53, 45, 37, 29,
+    21, 13, 5, 28, 20, 12, 4,
+]
+
+def hex_a_bits(hex_str):
+    # Convierte una llave hexadecimal en 64 bits de texto
+    return format(int(hex_str, 16), "064b")
+
+def permutar(bits, tabla):
+    resultado = ""
+    for n in tabla:
+        resultado = resultado + bits[n-1]
+    return resultado
+
+llave = hex_a_bits("133457799BBCDFF1")
+k_mas = permutar(llave, PC1)
+
+print("Llave (64):", llave)
+print("PC-1  (56):", k_mas, len(k_mas))
+print("C0:", k_mas[:28])
+print("D0:", k_mas[28:])
+
+esperado = "11110000110011001010101011110101010101100110011110001111"
+print("¿Correcto?", k_mas == esperado)
