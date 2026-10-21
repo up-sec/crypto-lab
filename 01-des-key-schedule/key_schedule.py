@@ -54,3 +54,22 @@ print("D0:", k_mas[28:])
 
 esperado = "11110000110011001010101011110101010101100110011110001111"
 print("¿Correcto?", k_mas == esperado)
+
+# ===== Fase 3: C y D + 16 rotaciones =====
+
+ROTACIONES = [1, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 1]
+
+c = k_mas[:28]
+d = k_mas[28:]
+historial = []
+
+for ronda, n in enumerate(ROTACIONES, start=1):
+    c = c[n:] + c[:n]
+    d = d[n:] + d[:n]
+    historial.append((c, d))
+    print(f"Ronda {ronda:2}: C={c}  D={d}")
+
+print("¿C1 correcto?", historial[0][0] == "1110000110011001010101011111")
+print("¿D1 correcto?", historial[0][1] == "1010101011001100111100011110")
+print("¿C16 == C0?", c == k_mas[:28])
+print("¿D16 == D0?", d == k_mas[28:])
