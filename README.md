@@ -8,7 +8,7 @@ Part of my training path toward applied cryptography, PKI and post-quantum crypt
 
 | # | Lab | Status |
 |---|-----|--------|
-| 01 | [DES key schedule](01-des-key-schedule/): generating the 16 round subkeys (PC-1, rotations, PC-2) in Python | In progress |
+| 01 | [DES key schedule](01-des-key-schedule/): generating the 16 round subkeys (PC-1, rotations, PC-2) in Python | Complete |
 
 ## Roadmap
 
