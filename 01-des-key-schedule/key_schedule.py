@@ -73,3 +73,26 @@ print("¿C1 correcto?", historial[0][0] == "1110000110011001010101011111")
 print("¿D1 correcto?", historial[0][1] == "1010101011001100111100011110")
 print("¿C16 == C0?", c == k_mas[:28])
 print("¿D16 == D0?", d == k_mas[28:])
+
+# ===== Fase 4: PC-2 =====
+
+PC2 = [
+    14, 17, 11, 24, 1, 5,
+    3, 28, 15, 6, 21, 10,
+    23, 19, 12, 4, 26, 8,
+    16, 7, 27, 20, 13, 2,
+    41, 52, 31, 37, 47, 55,
+    30, 40, 51, 45, 33, 48,
+    44, 49, 39, 56, 34, 53,
+    46, 42, 50, 36, 29, 32,
+]
+
+subllaves = []
+for ronda, (c, d) in enumerate(historial, start=1):
+    k = permutar(c + d, PC2)
+    subllaves.append(k)
+    print(f"K{ronda:<2} = {k}")
+
+print("¿K1 correcto? ", subllaves[0] == "000110110000001011101111111111000111000001110010")
+print("¿K16 correcto?", subllaves[15] == "110010110011110110001011000011100001011111110101")
+print("¿Todas de 48 bits?", all(len(k) == 48 for k in subllaves))
