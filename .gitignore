@@ -2,3 +2,5 @@
 *.key
 id_*
 __pycache__/
+*.bmp
+04-aes-openssl/secreto.txt
