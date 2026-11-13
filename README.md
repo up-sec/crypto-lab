@@ -12,10 +12,10 @@ Part of my training path toward applied cryptography, PKI and post-quantum crypt
 | 02 | [AES modes: ECB vs CBC](02-aes-modes/): encrypting an image to show how ECB leaks patterns and why CBC needs a random IV | Complete |
 | 03 | [AES-GCM](03-aes-gcm/): authenticated encryption (AEAD); a single flipped bit is detected and rejected (`InvalidTag`) | Complete |
 | 04 | [AES with OpenSSL](04-aes-openssl/): file encryption with AES-256-CBC + PBKDF2 (600k iterations); why `openssl enc` lacks integrity | Complete |
+| 05 | [Hashing and HMAC](05-hashing/): SHA-256 properties, file integrity check, why a plain hash fails against an attacker, HMAC | Complete |
 
 ## Roadmap
 
-- Hashing and HMAC
 - RSA and elliptic curve cryptography
 - Digital signatures
 - PKI with OpenSSL
@@ -33,4 +33,5 @@ Ubuntu on WSL2 (previously Parrot OS) · Python 3 · OpenSSL 3.0 · Git
 
 - **The mode matters as much as the algorithm**: AES-256 in ECB still leaks the shape of the data.
 - **IV / nonce**: not secret, but must never repeat with the same key. Nonce reuse in GCM breaks both confidentiality and authenticity.
+- **A hash is not a seal**: anyone can recompute it. Integrity against an attacker needs a key (HMAC) or a signature.
 - **Encryption ≠ integrity**: CBC alone is malleable (bit flipping). Use AEAD (AES-GCM) or encrypt-then-MAC.
